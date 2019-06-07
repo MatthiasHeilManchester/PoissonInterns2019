@@ -3,7 +3,20 @@
 noinst_PROGRAMS= \
 one_d_poisson_with_face_element \
 two_d_poisson_with_face_element \
-three_d_poisson_with_face_element
+three_d_poisson_with_face_element \
+cube_with_disk
+
+
+#---------------------------------------------------------------------------
+
+# Local sources that Joe's Poisson code depends on:
+cube_with_disk_SOURCES = cube_with_disk.cc
+
+# Required libraries: 
+cube_with_disk_LDADD = -L@libdir@  -lpoisson -lgeneric $(EXTERNAL_LIBS) $(FLIBS)
+
+# Use this to get the single disk without the surrounding torus
+cube_with_disk_CXXFLAGS=-DSINGLE_DISK
 
 
 #---------------------------------------------------------------------------
